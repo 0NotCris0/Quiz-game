@@ -1,0 +1,71 @@
+/* Estilo común de Inicio, Pregunta y Resultados */
+.pantalla {
+  box-sizing: border-box;
+  width: min(100% - 2rem, 36rem);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border: 1px solid #cad5e5;
+  border-radius: 1rem;
+  background-color: #f7f9fd;
+  color: #18263e;
+  font-family: system-ui, sans-serif;
+}
+
+/* Botón de respuesta */
+.opcion {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid #9aabc3;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  color: #18263e;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.opcion:focus-visible {
+  outline: 3px solid #254bb6;
+  outline-offset: 2px;
+}
+
+.opcion:disabled {
+  cursor: default;
+}
+
+/* Estados que añade Joan desde JavaScript */
+.opcion.correcta {
+  border-color: #25774f;
+  background-color: #e4f4eb;
+  color: #165b39;
+}
+
+.opcion.incorrecta {
+  border-color: #b6374e;
+  background-color: #fbe8eb;
+  color: #8e263c;
+}
+
+/* Puntuación y contadores de la pantalla de resultados */
+#puntuacion-final {
+  color: #254bb6;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+#aciertos {
+  color: #165b39;
+  font-weight: 700;
+}
+
+#fallos {
+  color: #8e263c;
+  font-weight: 700;
+}
+
+/* Al final para que oculto prevalezca sobre el display de opcion */
+.oculto {
+  display: none;
+}
