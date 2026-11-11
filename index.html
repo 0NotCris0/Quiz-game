@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <!-- Estilos: los define Adria en css/style.css -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+
+    <!-- PANTALLA 1: INICIO (visible al cargar la página) -->
+    <section id="pantalla-inicio" class="pantalla">
+      <h1>Quiz</h1>
+
+      <label for="nombre-jugador">Nombre del jugador</label>
+      <input type="text" id="nombre-jugador" placeholder="Escribe tu nombre">
+
+      <label for="tipo-quiz">Tipo de quiz</label>
+      <select id="tipo-quiz">
+        <!-- Ejemplos: Christian y Joan los sustituirán por los tipos reales -->
+        <option value="Tipo 1">Tipo 1</option>
+        <option value="Tipo 2">Tipo 2</option>
+      </select>
+
+      <button id="btn-empezar">Empezar</button>
+    </section>
+
+    <!-- PANTALLA 2: JUEGO (oculta al cargar; Joan la muestra desde JavaScript) -->
+    <section id="pantalla-juego" class="pantalla oculto">
+      <div class="info-juego">
+        <p id="progreso">Pregunta 1 de 5</p>
+        <p>Puntos: <span id="puntuacion">0</span></p>
+        <p>Tiempo: <span id="temporizador">15</span></p>
+      </div>
+
+      <h2 id="pregunta">Pregunta de ejemplo</h2>
+
+      <div id="opciones">
+        <button id="opcion-0" class="opcion">Opción 1</button>
+        <button id="opcion-1" class="opcion">Opción 2</button>
+        <button id="opcion-2" class="opcion">Opción 3</button>
+        <button id="opcion-3" class="opcion">Opción 4</button>
+      </div>
+
+      <button id="btn-siguiente">Siguiente</button>
+    </section>
+
+    <!-- PANTALLA 3: RESULTADOS (oculta al cargar; Joan la muestra al terminar) -->
+    <section id="pantalla-resultados" class="pantalla oculto">
+      <h2>Resultados</h2>
+      <p>Jugador: <span id="resultado-nombre"></span></p>
+      <p>Puntuación final: <span id="resultado-puntuacion">0</span></p>
+      <p>Aciertos: <span id="resultado-aciertos">0</span></p>
+      <p>Fallos: <span id="resultado-fallos">0</span></p>
+
+      <button id="btn-reiniciar">Volver a jugar</button>
+    </section>
+
+  </main>
+
+  <!-- Lógica del juego: la escribe Joan en js/script.js -->
+  <script src="js/script.js"></script>
+</body>
+</html>
