@@ -1,71 +1,395 @@
-/* Estilo común de Inicio, Pregunta y Resultados */
-.pantalla {
+:root {
+  color-scheme: dark;
+  --noche: #080723;
+  --panel: #10102d;
+  --texto: #f7f8ff;
+  --suave: #c5c9e3;
+  --cian: #16f4ff;
+  --rosa: #ff4be8;
+  --violeta: #8317ed;
+  --titulo: "Arial Black", "Arial", sans-serif;
+  --chaflan: polygon(
+    1rem 0, calc(100% - 1rem) 0, 100% 1rem,
+    100% calc(100% - 1rem), calc(100% - 1rem) 100%, 1rem 100%,
+    0 calc(100% - 1rem), 0 1rem
+  );
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
-  width: min(100% - 2rem, 36rem);
-  margin: 2rem auto;
-  padding: 1.5rem;
-  border: 1px solid #cad5e5;
-  border-radius: 1rem;
-  background-color: #f7f9fd;
-  color: #18263e;
-  font-family: system-ui, sans-serif;
 }
 
-/* Botón de respuesta */
-.opcion {
+body {
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip;
+  color: var(--texto);
+  font: 1rem/1.45 system-ui, sans-serif;
+  background:
+    radial-gradient(circle, #e0dcff 0 1px, transparent 2px) 12px 18px / 123px 137px,
+    radial-gradient(circle, #8aefff 0 1px, transparent 2px) 45px 57px / 177px 101px,
+    radial-gradient(ellipse at 50% 65%, #42126b 0, transparent 65%),
+    linear-gradient(#070620, #19103d 66%, #09051d 90%);
+}
+
+/* Sol de líneas y cuadrícula del horizonte */
+body::before, body::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  top: 4rem;
+  right: max(1rem, 9vw);
+  width: clamp(5rem, 15vw, 10rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: repeating-linear-gradient(0deg, transparent 0 4px, #ff47d8 4px 10px);
+  box-shadow: 0 0 50px #e920a566;
+}
+
+body::after {
+  inset: auto 0 0;
+  height: 10rem;
+  background:
+    repeating-linear-gradient(90deg, #eb29ed88 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(0deg, #eb29ed88 0 1px, transparent 1px 24px),
+    #100721;
+  transform: perspective(180px) rotateX(36deg);
+  transform-origin: bottom;
+  border-top: 2px solid var(--rosa);
+}
+
+main {
+  width: min(calc(100% - 1.5rem), 33rem);
+  margin-inline: auto;
+  padding-block: clamp(1.4rem, 5vh, 3rem);
+}
+
+.cabecera-arena {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.cabecera-arena p, h1, h2, .etiqueta-pantalla {
+  font-family: var(--titulo);
+}
+
+.cabecera-arena p {
+  margin: 0;
+  font-size: clamp(1.4rem, 6vw, 2.75rem);
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-shadow: 2px 2px var(--rosa), -2px -1px #008eaa;
+}
+
+.alas {
+  flex: 0 1 3rem;
+  height: 0.9rem;
+  background: linear-gradient(
+    var(--cian) 0 22%, transparent 22% 39%,
+    var(--rosa) 39% 61%, transparent 61% 78%, var(--cian) 78%
+  );
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 35% 100%);
+}
+
+.alas-derecha {
+  transform: scaleX(-1);
+}
+
+/* Marco común de las tres pantallas */
+.pantalla {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(1.1rem, 5vw, 2rem);
+  background: var(--cian);
+  clip-path: var(--chaflan);
+}
+
+.pantalla::before, .pantalla::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  clip-path: var(--chaflan);
+  pointer-events: none;
+}
+
+.pantalla::before {
+  inset: 2px;
+  background: linear-gradient(145deg, #154e71, var(--noche) 22% 78%, #6939a4);
+}
+
+.pantalla::after {
+  inset: 7px;
+  border: 1px solid #20edff50;
+  background: linear-gradient(160deg, var(--panel) 55%, #201045);
+}
+
+.etiqueta-pantalla {
+  width: min(85%, 18rem);
+  margin: 0 auto 1rem;
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--rosa);
+  background: #310c4f;
+  color: var(--texto);
+  font-size: 0.82rem;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.icono-arena {
+  text-align: center;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  filter: drop-shadow(0 0 8px #19d8ff80);
+}
+
+h1, #pantalla-resultados h2 {
+  margin: 0.45rem 0 1.2rem;
+  font-style: italic;
+  font-weight: 900;
+  line-height: 0.99;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 2px 2px #9c2ade, -1px -1px #08b0ca;
+}
+
+h1 {
+  font-size: clamp(2.35rem, 10vw, 4.2rem);
+}
+
+#pantalla-resultados h2 {
+  font-size: clamp(1.55rem, 6vw, 2.55rem);
+}
+
+/* Campos y botones */
+label {
   display: block;
-  width: 100%;
-  margin: 0.5rem 0;
-  padding: 0.75rem 1rem;
-  border: 1px solid #9aabc3;
-  border-radius: 0.5rem;
-  background-color: #fff;
-  color: #18263e;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
+  margin: 0.8rem 0 0.3rem;
+  font-weight: 750;
 }
 
-.opcion:focus-visible {
-  outline: 3px solid #254bb6;
+input, select, button {
+  font: inherit;
+}
+
+input, select, .opcion {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--cian);
+  border-radius: 0.45rem;
+  background: #081a34;
+  color: var(--texto);
+}
+
+input::placeholder {
+  color: var(--suave);
+  opacity: 1;
+}
+
+:where(button, input, select):focus-visible {
+  outline: 3px solid #fff;
   outline-offset: 2px;
 }
 
-.opcion:disabled {
+button {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+button:disabled {
   cursor: default;
 }
 
-/* Estados que añade Joan desde JavaScript */
+#btn-empezar, #btn-siguiente, #btn-reiniciar {
+  display: block;
+  width: 100%;
+  min-height: 3rem;
+  margin-top: 1.25rem;
+  padding: 0.65rem;
+  border: 2px solid var(--cian);
+  border-radius: 0.6rem;
+  background: linear-gradient(#4ffaff, #06c4e5);
+  box-shadow: inset 0 0 0 2px #d4ffff66, 0 0 14px #10ebff70;
+  color: #071525;
+  font: 900 1rem var(--titulo);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#btn-reiniciar {
+  border-color: #eaa6ff;
+  background: linear-gradient(#9c19ff, #5500bd);
+  box-shadow: inset 0 0 0 2px #ffb5ff55, 0 0 14px #ae26ff88;
+  color: #fff;
+}
+
+#btn-siguiente:disabled {
+  border-color: #788097;
+  background: #34394e;
+  box-shadow: none;
+  color: #c9cbda;
+}
+
+/* Pantalla de juego */
+.info-juego {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+  padding: 0.4rem 0 0.6rem;
+  border-bottom: 3px solid var(--cian);
+  color: var(--suave);
+  text-align: center;
+  font-size: clamp(0.73rem, 3vw, 0.92rem);
+}
+
+.info-juego p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.info-juego p + p {
+  border-inline-start: 1px solid #6b6d8d;
+}
+
+.info-juego span {
+  color: var(--cian);
+  font-variant-numeric: tabular-nums;
+}
+
+#pregunta {
+  margin: 0.9rem 0 0.6rem;
+  padding: 0.75rem;
+  border: 1px solid var(--rosa);
+  border-radius: 0.3rem;
+  background: #1d123e;
+  font-family: inherit;
+  font-size: clamp(1.15rem, 4vw, 1.6rem);
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#opciones {
+  display: grid;
+  gap: 0.45rem;
+  counter-reset: respuesta;
+}
+
+.opcion {
+  counter-increment: respuesta;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+
+.opcion::before {
+  content: counter(respuesta, upper-alpha) " · ";
+  color: var(--cian);
+}
+
+@media (hover: hover) {
+  .opcion:not(:disabled, .correcta, .incorrecta):hover {
+    background: #123456;
+  }
+}
+
 .opcion.correcta {
-  border-color: #25774f;
-  background-color: #e4f4eb;
-  color: #165b39;
+  border-color: #5ffa99;
+  background: #104328;
+  color: #d8ffe3;
 }
 
 .opcion.incorrecta {
-  border-color: #b6374e;
-  background-color: #fbe8eb;
-  color: #8e263c;
+  border-color: #ff86ae;
+  background: #531438;
+  color: #ffe2ed;
 }
 
-/* Puntuación y contadores de la pantalla de resultados */
-#puntuacion-final {
-  color: #254bb6;
-  font-size: 1.75rem;
+.opcion:is(.correcta, .incorrecta)::before {
+  color: inherit;
+}
+
+/* Pantalla de resultados */
+#pantalla-resultados > p:not(.etiqueta-pantalla) {
+  margin: 0 0 0.55rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.marcador-final {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  text-align: center;
+  font-weight: 750;
+}
+
+.marcador-final p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.marcador-final .puntuacion-final {
+  grid-column: 1 / -1;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #737894;
+  color: var(--suave);
+}
+
+#resultado-puntuacion {
+  display: block;
+  color: var(--cian);
+  font: 900 clamp(3.25rem, 13vw, 5rem)/1.05 "Cascadia Mono", Consolas, monospace;
+  text-shadow: 0 0 14px #12efff90;
+}
+
+.marcador-final p:nth-child(2), .marcador-final p:nth-child(3) {
+  padding: 0.45rem 0.3rem;
+  border: 1px solid;
+  border-radius: 0.35rem;
+}
+
+.marcador-final p:nth-child(2) {
+  color: #9ff9bb;
+  background: #133a28;
+}
+
+.marcador-final p:nth-child(3) {
+  color: #ffb4d0;
+  background: #451631;
+}
+
+.pie-arena {
+  margin-top: 0.8rem;
+  padding: 0.3rem;
+  background: #080723da;
+  color: var(--suave);
+  font-size: 0.82rem;
   font-weight: 700;
+  text-align: center;
 }
 
-#aciertos {
-  color: #165b39;
-  font-weight: 700;
+.pie-arena span {
+  margin-inline: 0.4rem;
+  color: var(--cian);
 }
 
-#fallos {
-  color: #8e263c;
-  font-weight: 700;
-}
-
-/* Al final para que oculto prevalezca sobre el display de opcion */
+/* JavaScript añade o quita esta clase para cambiar de pantalla */
 .oculto {
-  display: none;
+  display: none !important;
 }
