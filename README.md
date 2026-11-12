@@ -1,12 +1,45 @@
 # Quiz-game 
 
-## 👥 Integrantes del equipo y reparto de tareas
+# Instrucciones de uso
+
+## Cómo se juega
+
+- Cada categoría contiene **15 preguntas**.
+- Las preguntas se muestran de una en una y tienen **cuatro opciones**.
+- Solo una opción es correcta.
+- Selecciona una respuesta antes de que termine el tiempo.
+- Después de responder, las opciones se bloquean para impedir que cambies la respuesta.
+- El juego indica visualmente si has acertado o fallado.
+- Pulsa **Siguiente** para continuar con la próxima pregunta.
+
+## Cómo se puntúa
+- **Respuesta correcta:** sumas 1 punto.
+- **Respuesta incorrecta:** no sumas puntos.
+- **Tiempo agotado:** la pregunta cuenta como un fallo y no suma puntos.
+- Los fallos no restan puntos.
+
+La puntuación se actualiza durante la partida. Al terminar, se muestra la puntuación final, el número de aciertos y el número de fallos.
+
+## Cómo funciona el temporizador
+
+- Cada pregunta tiene un **tiempo límite**, mostrado mediante una cuenta atrás.
+- El contador comienza cuando aparece la pregunta.
+- Si respondes antes de que termine, el temporizador se detiene.
+- Si llega a **cero**, la pregunta cuenta como fallada y el juego pasa automáticamente a la siguiente.
+- El temporizador se restablece al comenzar cada nueva pregunta.
+
+## Volver a jugar
+
+Al finalizar la partida, pulsa **Reiniciar** para empezar de nuevo.
+La puntuación, los aciertos, los fallos y el temporizador se restablecen para la nueva partida.
+
+## Integrantes del equipo y reparto de tareas
 
 El proyecto está desarrollado por cuatro integrantes: **Christian, Albert, Adria y Joan**.
 
 Cada integrante tiene asignadas diferentes tareas para organizar el desarrollo y facilitar el trabajo en equipo.
 
-### 👨‍💻 Christian - Organización, preguntas y documentación
+### Christian - Organización, preguntas y documentación
 
 Christian es el encargado de organizar el proyecto mediante GitHub Projects, preparar las preguntas del quiz y redactar la documentación.
 
@@ -27,7 +60,7 @@ Christian es el encargado de organizar el proyecto mediante GitHub Projects, pre
 - Revisar las preguntas y probar varias partidas completas.
 - Realizar la revisión final de la documentación y del repositorio.
 
-### 👨‍💻 Albert - Repositorio, estructura HTML y resultados
+### Albert - Repositorio, estructura HTML y resultados
 
 Albert es el encargado de crear la estructura inicial del proyecto, preparar el HTML y mostrar la pantalla final de resultados.
 
@@ -53,7 +86,7 @@ Albert es el encargado de crear la estructura inicial del proyecto, preparar el 
 - Mostrar los resultados utilizando los datos de aciertos y fallos que guarda Joan.
 - Probar una partida completa y detectar errores en la lógica del juego.
 
-### 👨‍💻 Adria - Diseño CSS y responsive
+### Adria - Diseño CSS y responsive
 
 Adria es el encargado de desarrollar el diseño visual del juego y adaptarlo a diferentes dispositivos.
 
@@ -77,7 +110,7 @@ Adria es el encargado de desarrollar el diseño visual del juego y adaptarlo a d
 - Comprobar el diseño en diferentes tamaños de pantalla.
 - Revisar los elementos HTML y sus IDs para detectar posibles errores.
 
-### 👨‍💻 Joan - Lógica JavaScript, puntuación y temporizador
+### Joan - Lógica JavaScript, puntuación y temporizador
 
 Joan es el encargado de desarrollar el funcionamiento principal del juego mediante JavaScript.
 
@@ -101,7 +134,7 @@ Joan es el encargado de desarrollar el funcionamiento principal del juego median
 - Restablecer la puntuación y las preguntas para comenzar otra partida.
 - Revisar el funcionamiento de los estilos CSS durante el juego.
 
-## 🧪 Pruebas y revisión del proyecto
+## Pruebas y revisión del proyecto
 
 Cada integrante también es responsable de probar una parte del trabajo de sus compañeros.
 
@@ -112,12 +145,4 @@ Cada integrante también es responsable de probar una parte del trabajo de sus c
 | Adria | Revisar la estructura HTML y comprobar los IDs. |
 | Joan | Comprobar los estilos CSS durante el funcionamiento del juego. |
 
-Además, todos los integrantes deben:
-
-- Corregir los errores encontrados en su propia parte.
-- Añadir comentarios claros y descriptivos al código.
-- Comprobar que sus funcionalidades funcionan correctamente.
-- Preparar una explicación del código desarrollado y de cómo se ha generado.
-
-Christian será el encargado de realizar la revisión final del README, los comentarios y el repositorio.
 
