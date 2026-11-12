@@ -71,6 +71,3 @@ function volverAlInicio() {
   pantallaResultados.classList.add("oculto");
   pantallaInicio.classList.remove("oculto");
 }
-
-// ---------- Eventos ----------
-botonEmpezar.addEventListener("click", empezar);
