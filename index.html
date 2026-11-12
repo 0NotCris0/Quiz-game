@@ -19,10 +19,9 @@
 
       <label for="tipo-quiz">Categoría de quiz</label>
       <select id="tipo-quiz">
-        <!-- Ejemplos: Christian y Joan los sustituirán por las categorías reales.
-             El value debe coincidir con el campo "tipo" de las preguntas. -->
-        <option value="Categoría 1">Categoría 1</option>
-        <option value="Categoría 2">Categoría 2</option>
+        <!-- El value debe ser IGUAL que la clave de bancosDePreguntas en js/acceso.js -->
+        <option value="Videojuegos">Videojuegos</option>
+        <option value="Deportes">Deportes</option>
       </select>
 
       <button id="btn-empezar">Empezar</button>
@@ -61,6 +60,8 @@
 
   </main>
 
+  <!-- Preguntas de cada categoría: las prepara Christian en js/preguntas.js -->
+  <script src="js/preguntas.js"></script>
   <!-- Lógica del juego: la escribe Joan en js/script.js -->
   <script src="js/script.js"></script>
   <!-- Pantalla de inicio (nombre y categoría): la escribe Albert en js/acceso.js -->

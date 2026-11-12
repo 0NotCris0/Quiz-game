@@ -1,9 +1,8 @@
 // =====================================================
 // acceso.js — Pantalla de inicio del Quiz (Albert)
-// Valida el nombre, guarda la categoría elegida, filtra
-// las preguntas de esa categoría y cambia a la pantalla
-// de juego.
-// Se carga DESPUÉS de script.js (ver index.html).
+// Valida el nombre, guarda la categoría elegida, coge las
+// preguntas de esa categoría y cambia a la pantalla de juego.
+// Se carga DESPUÉS de preguntas.js y script.js (ver index.html).
 // =====================================================
 
 // ---------- Datos de la partida ----------
@@ -12,6 +11,16 @@ let nombreJugador = "";      // nombre escrito por el jugador
 let categoriaElegida = "";   // categoría elegida en el selector
 let preguntasPartida = [];   // solo las preguntas de esa categoría
 
+// ---------- Categorías ----------
+// La clave debe ser IGUAL que el value de las opciones del selector
+// (index.html). Cada categoría apunta a su array de js/preguntas.js.
+// Para añadir una categoría: nuevo array en preguntas.js, nueva
+// opción en el selector y una línea aquí.
+const bancosDePreguntas = {
+  "Videojuegos": typeof preguntasVideojuegos !== "undefined" ? preguntasVideojuegos : [],
+  "Deportes": typeof preguntasDeportes !== "undefined" ? preguntasDeportes : []
+};
+
 // ---------- Elementos del HTML ----------
 const pantallaInicio = document.getElementById("pantalla-inicio");
 const pantallaJuego = document.getElementById("pantalla-juego");
@@ -19,38 +28,6 @@ const pantallaResultados = document.getElementById("pantalla-resultados");
 const campoNombre = document.getElementById("nombre-jugador");
 const selectorCategoria = document.getElementById("tipo-quiz");
 const botonEmpezar = document.getElementById("btn-empezar");
-
-// ---------- Preguntas de prueba ----------
-// Solo se usan si todavía no existe el array "preguntas" de
-// script.js. BORRAR cuando Christian suba las preguntas reales.
-const preguntasDePrueba = [
-  {
-    tipo: "Categoría 1",
-    pregunta: "Pregunta de prueba 1",
-    opciones: ["Opción A", "Opción B", "Opción C", "Opción D"],
-    correcta: 0
-  },
-  {
-    tipo: "Categoría 1",
-    pregunta: "Pregunta de prueba 2",
-    opciones: ["Opción A", "Opción B", "Opción C", "Opción D"],
-    correcta: 1
-  },
-  {
-    tipo: "Categoría 2",
-    pregunta: "Pregunta de prueba 3",
-    opciones: ["Opción A", "Opción B", "Opción C", "Opción D"],
-    correcta: 2
-  }
-];
-
-// Devuelve el array real si existe; si no, el de prueba
-function obtenerPreguntas() {
-  if (typeof preguntas !== "undefined") {
-    return preguntas;
-  }
-  return preguntasDePrueba;
-}
 
 // ---------- Empezar la partida ----------
 function empezar() {
@@ -63,21 +40,19 @@ function empezar() {
     return;
   }
 
-  // 2. Filtrar las preguntas de la categoría elegida
+  // 2. Coger las preguntas de la categoría elegida
   const categoria = selectorCategoria.value;
-  const filtradas = obtenerPreguntas().filter(function (p) {
-    return p.tipo === categoria;
-  });
+  const banco = bancosDePreguntas[categoria] || [];
 
-  if (filtradas.length === 0) {
+  if (banco.length === 0) {
     alert("No hay preguntas para esta categoría.");
     return;
   }
 
-  // 3. Guardar los datos de la partida
+  // 3. Guardar los datos de la partida (copia, para no tocar el banco original)
   nombreJugador = nombre;
   categoriaElegida = categoria;
-  preguntasPartida = filtradas;
+  preguntasPartida = banco.slice();
 
   // 4. Cambiar de pantalla
   pantallaInicio.classList.add("oculto");
