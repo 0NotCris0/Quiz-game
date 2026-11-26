@@ -301,6 +301,14 @@ function comencarPartida() {
         alert("No hi ha preguntes per a aquest tipus de quiz.");
         return;
     }
+    // Mezclar las preguntas de la categoría elegida
+    for (let i = preguntesPartida.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        const temporal = preguntesPartida[i];
+        preguntesPartida[i] = preguntesPartida[j];
+        preguntesPartida[j] = temporal;
+    }
 
     preguntaActual = 0;
     encerts = 0;
