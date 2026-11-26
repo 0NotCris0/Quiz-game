@@ -52,7 +52,17 @@ function empezar() {
   // 3. Guardar los datos de la partida (copia, para no tocar el banco original)
   nombreJugador = nombre;
   categoriaElegida = categoria;
+  // Copiar las preguntas para conservar el banco original
   preguntasPartida = banco.slice();
+
+// Mezclar las preguntas
+  for (let i = preguntasPartida.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      const temporal = preguntasPartida[i];
+      preguntasPartida[i] = preguntasPartida[j];
+      preguntasPartida[j] = temporal;
+  }
 
   // 4. Cambiar de pantalla
   pantallaInicio.classList.add("oculto");
